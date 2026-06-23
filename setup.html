@@ -62,8 +62,7 @@
             <p class="mt-4 text-slate-500 text-lg">Sesuaikan pilihan di bawah ini agar website Anda tampil sempurna.</p>
         </div>
 
-        <form action="index.html" method="GET" class="space-y-16">
-            
+        <form id="setup-form" class="space-y-16">            
             <section>
                 <div class="flex items-center space-x-3 mb-6">
                     <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">1</div>
@@ -250,6 +249,15 @@
                 // 4. Update the main header to reflect they chose a name
                 document.querySelector('h1').innerHTML = `Bagus! Kami telah menyimpan namamu. <br class="hidden md:block"><span class="text-blue-600">Sekarang Pilih Identitas Bisnismu</span>`;
             }
+        });
+
+        document.getElementById('setup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const urlParams = new URLSearchParams(window.location.search);
+            const passedName = urlParams.get('nama') || document.getElementById('custom-nama-input').value || 'Toko Baru';
+            
+            // Alihkan langsung ke payment gateway dengan membawa parameter nama bisnis
+            window.location.href = `payment.html?nama=${encodeURIComponent(passedName)}`;
         });
     </script>
 </body>

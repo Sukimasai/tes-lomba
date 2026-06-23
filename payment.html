@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapakinstan Secure Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="payment-box" class="w-full max-w-4xl bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden flex flex-col md:flex-row transition-all duration-500">
+        
+        <div class="w-full md:w-2/5 bg-slate-50 p-8 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between">
+            <div>
+                <div class="text-xl font-bold tracking-tighter mb-8">lapak<span class="text-blue-600">✦</span>instan.</div>
+                <div class="space-y-1 mb-6">
+                    <span class="text-xs font-bold text-slate-400 uppercase">Nama Lapak</span>
+                    <h2 id="summary-biz-name" class="text-lg font-bold text-slate-800">-</h2>
+                </div>
+                <div class="space-y-4 pt-4 border-t border-slate-200">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Paket Profesional (1 Bulan)</span>
+                        <span class="font-medium text-slate-800">Rp 29.000</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-slate-500">Setup Token AI & Hosting</span>
+                        <span class="font-medium text-green-600">FREE</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-slate-200 mt-8 md:mt-0">
+                <div class="flex justify-between items-baseline">
+                    <span class="text-sm font-semibold text-slate-600">Total Bayar:</span>
+                    <span class="text-2xl font-black text-blue-600">Rp 29.000</span>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-2">ID Transaksi: LI-REF-${Math.floor(Math.random() * 90000) + 10000}</p>
+            </div>
+        </div>
+
+        <div class="w-full md:w-3/5 p-8 flex flex-col justify-between">
+            <div>
+                <h3 class="text-lg font-bold text-slate-900 mb-6">Pilih Metode Pembayaran</h3>
+                
+                <div class="space-y-3">
+                    <label class="flex items-center justify-between border-2 border-blue-600 bg-blue-50/50 p-4 rounded-xl cursor-pointer">
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="payment_method" checked class="w-4 h-4 text-blue-600">
+                            <div>
+                                <span class="font-bold text-sm block">QRIS (Gopay, OVO, Dana, LinkAja)</span>
+                                <span class="text-xs text-slate-500">Konfirmasi otomatis, bayar instan via scan</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold bg-blue-600 text-white px-2 py-0.5 rounded">⚡ Instan</span>
+                    </label>
+
+                    <label class="flex items-center justify-between border border-slate-200 p-4 rounded-xl cursor-pointer hover:bg-slate-50">
+                        <div class="flex items-center space-x-3">
+                            <input type="radio" name="payment_method" class="w-4 h-4 text-blue-600">
+                            <div>
+                                <span class="font-bold text-sm block">Virtual Account (BCA, Mandiri, BRI)</span>
+                                <span class="text-xs text-slate-500">Transfer melalui ATM atau M-Banking</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="mt-6 p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col items-center">
+                    <div class="w-32 h-32 bg-slate-800 rounded-lg flex items-center justify-center text-white text-xs font-mono mb-2 relative overflow-hidden">
+                        <div class="absolute inset-2 bg-white border-4 border-black flex flex-wrap p-1">
+                            <div class="w-6 h-6 bg-black m-0.5"></div><div class="w-6 h-6 bg-white m-0.5"></div><div class="w-6 h-6 bg-black ml-auto"></div>
+                            <div class="w-full h-4 bg-slate-200 my-2"></div>
+                            <div class="w-6 h-6 bg-black mt-auto"></div><div class="w-10 h-6 bg-black ml-auto mt-auto"></div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium text-slate-500">Pindai kode QR di atas untuk menyelesaikan</span>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <button onclick="processPayment()" class="w-full bg-blue-600 text-white rounded-xl py-3.5 font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200 text-sm">
+                    Simulasikan Pembayaran Berhasil
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-box" class="hidden w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 p-8 text-center flex flex-col items-center">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6 scale-0 animate-[popup_0.4s_ease-out_forwards]">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Pembayaran Berhasil!</h2>
+        <p class="text-sm text-slate-500 mb-6">Sistem AI sedang menyiapkan Smart Dashboard lapak Anda.</p>
+        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+            <div class="h-full bg-green-500 rounded-full animate-[loadingBar_2s_ease-out_forwards]"></div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes popup { to { transform: scale(1); } }
+        @keyframes loadingBar { from { width: 0%; } to { width: 100%; } }
+    </style>
+
+    <script>
+        // Fetch current business name from URL query params
+        const urlParams = new URLSearchParams(window.location.search);
+        const bizName = urlParams.get('nama') || 'Toko UMKM';
+        document.getElementById('summary-biz-name').innerText = bizName;
+
+        function processPayment() {
+            // Hide payment box and show success screen animation
+            document.getElementById('payment-box').classList.add('hidden');
+            document.getElementById('success-box').classList.remove('hidden');
+            
+            // Redirect to smart dashboard after 2 seconds
+            setTimeout(() => {
+                window.location.href = `dashboard.html?nama=${encodeURIComponent(bizName)}`;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
