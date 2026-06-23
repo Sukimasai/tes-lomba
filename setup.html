@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lapakinstan - Pilih Identitas Bisnis</title>
+    <title>Lapakinstan - Setup & Asesmen Bisnis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -51,25 +51,101 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         
         <!-- Header -->
-        <div class="mb-16">
+        <div class="mb-12 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-bold leading-tight text-slate-900 max-w-3xl">
-                AI Kami Sudah Menemukan Nama Terbaik Untukmu! <br class="hidden md:block">
-                <span class="text-blue-600">Pilih Identitas Bisnismu</span>
+                Bagus! Kami telah menyimpan data Anda. <br class="hidden md:block">
+                <span class="text-blue-600">Sekarang Lengkapi Identitas Bisnismu</span>
             </h1>
-            <p class="mt-4 text-slate-500 text-lg">Sesuaikan pilihan di bawah ini agar website Anda tampil sempurna.</p>
+            <p class="mt-4 text-slate-500 text-lg">Sesuaikan pilihan di bawah ini agar AI dapat meracik strategi terbaik untuk Anda.</p>
         </div>
 
-        <form id="setup-form" class="space-y-16">            
+        <form id="setup-form" class="space-y-16">
+            
+            <!-- SECTION 1: Asesmen Bisnis -->
+            <section class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-0"></div>
+                
+                <div class="flex items-center space-x-3 mb-2 relative z-10">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">1</div>
+                    <h2 class="text-2xl font-bold text-slate-800">Asesmen Pintar AI</h2>
+                </div>
+                <p class="text-sm text-slate-500 mb-8 relative z-10">Bantu mesin kami memahami target dan tantangan Anda untuk menyusun strategi peningkatan omzet di Dashboard.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    <!-- Q1 -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Apa tujuan utama lapak digital ini?</label>
+                        <div class="relative">
+                            <select required class="w-full border border-gray-300 rounded-xl px-4 py-3.5 outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white text-sm appearance-none cursor-pointer text-slate-700">
+                                <option value="" disabled selected hidden>Pilih tujuan utama...</option>
+                                <option value="sales">Meningkatkan omzet & penjualan</option>
+                                <option value="brand">Membangun kredibilitas brand</option>
+                                <option value="manage">Memudahkan manajemen pesanan</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Q2 -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Berapa rata-rata pesanan per bulan?</label>
+                        <div class="relative">
+                            <select required class="w-full border border-gray-300 rounded-xl px-4 py-3.5 outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white text-sm appearance-none cursor-pointer text-slate-700">
+                                <option value="" disabled selected hidden>Pilih estimasi pesanan...</option>
+                                <option value="new">Baru mulai (Belum ada pesanan)</option>
+                                <option value="small">1 - 50 pesanan</option>
+                                <option value="medium">51 - 200 pesanan</option>
+                                <option value="large">Lebih dari 200 pesanan</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="md:col-span-2 border-t border-slate-100 pt-6 mt-2">
+                        <label class="block text-sm font-semibold text-slate-700 mb-4">Tantangan terbesar yang sedang Anda hadapi?</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <!-- Challenge 1 -->
+                            <label class="cursor-pointer">
+                                <input type="radio" name="challenge" value="traffic" class="peer hidden" required>
+                                <div class="border border-slate-200 rounded-xl px-4 py-3.5 text-center text-sm font-medium text-slate-600 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:bg-slate-50 transition">
+                                    Sepi pembeli (Traffic)
+                                </div>
+                            </label>
+                            <!-- Challenge 2 -->
+                            <label class="cursor-pointer">
+                                <input type="radio" name="challenge" value="conversion" class="peer hidden">
+                                <div class="border border-slate-200 rounded-xl px-4 py-3.5 text-center text-sm font-medium text-slate-600 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:bg-slate-50 transition">
+                                    Sering ditanya, jarang beli
+                                </div>
+                            </label>
+                            <!-- Challenge 3 -->
+                            <label class="cursor-pointer">
+                                <input type="radio" name="challenge" value="time" class="peer hidden">
+                                <div class="border border-slate-200 rounded-xl px-4 py-3.5 text-center text-sm font-medium text-slate-600 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:bg-slate-50 transition">
+                                    Kewalahan balas chat
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Pilih Nama Bisnis -->
             <section>
                 <div class="flex items-center space-x-3 mb-6">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">1</div>
+                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">2</div>
                     <h2 class="text-2xl font-bold text-slate-800">Pilih Nama Bisnis</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    
+                    <!-- Option 1 -->
                     <label class="cursor-pointer relative">
                         <input type="radio" name="nama_bisnis" value="rasa_nusantara" class="card-radio hidden" checked>
                         <div class="card-content border-2 border-slate-200 bg-white rounded-2xl p-6 hover:border-blue-300 h-full">
@@ -80,7 +156,7 @@
                             <p class="text-sm text-slate-500">Klasik, mudah diingat, dan sangat menonjolkan cita rasa lokal.</p>
                         </div>
                     </label>
-                    
+                    <!-- Option 2 -->
                     <label class="cursor-pointer relative">
                         <input type="radio" name="nama_bisnis" value="dapur_sedap" class="card-radio hidden">
                         <div class="card-content border-2 border-slate-200 bg-white rounded-2xl p-6 hover:border-blue-300 h-full">
@@ -91,27 +167,24 @@
                             <p class="text-sm text-slate-500">Memberi kesan cepat, praktis, dan rasa yang dijamin enak.</p>
                         </div>
                     </label>
-                    
+                    <!-- Option 3 (Custom Input) -->
                     <label class="cursor-pointer relative">
-                        <!-- Added id="radio-custom-nama" -->
                         <input type="radio" id="radio-custom-nama" name="nama_bisnis" value="custom" class="card-radio hidden">
                         <div class="card-content border-2 border-slate-200 bg-white rounded-2xl p-6 hover:border-blue-300 h-full flex flex-col justify-center">
                             <div class="absolute top-4 right-4 text-blue-600 check-icon">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <!-- Added id="custom-nama-title" -->
                             <h3 id="custom-nama-title" class="text-lg font-semibold text-slate-700 mb-3">Tulis nama sendiri</h3>
-                            <!-- Added id="custom-nama-input" -->
                             <input type="text" id="custom-nama-input" placeholder="Ketik nama bisnis..." class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-500 relative z-20" onclick="document.getElementById('radio-custom-nama').checked = true">
                         </div>
                     </label>
                 </div>
             </section>
 
-            <!-- SECTION 2: Pilih Palet Warna -->
+            <!-- SECTION 3: Pilih Palet Warna -->
             <section>
                 <div class="flex items-center space-x-3 mb-6">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">2</div>
+                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">3</div>
                     <h2 class="text-2xl font-bold text-slate-800">Pilih Identitas Warna</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -166,10 +239,10 @@
                 </div>
             </section>
 
-            <!-- SECTION 3: Pilih Logo Bisnis -->
+            <!-- SECTION 4: Pilih Logo Bisnis -->
             <section>
                 <div class="flex items-center space-x-3 mb-6">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">3</div>
+                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">4</div>
                     <h2 class="text-2xl font-bold text-slate-800">Pilih Logo Bisnis</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -218,45 +291,39 @@
                 </div>
             </section>
 
+            <!-- Submit Button -->
             <div class="pt-8 pb-16 flex justify-center border-t border-slate-200 mt-12">
                 <button type="submit" class="bg-blue-600 text-white px-12 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition shadow-lg shadow-blue-200 flex items-center gap-2 hover:scale-105 transform">
-                    Selesai & Lihat Website
+                    Lanjut ke Pembayaran
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
             </div>
 
         </form>
     </main>
+
+    <!-- Script to catch data from create.html and handle submission -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Look at the URL for "?nama=..."
             const urlParams = new URLSearchParams(window.location.search);
             const passedName = urlParams.get('nama');
             
             // If the user filled out the name in the previous step
             if (passedName && passedName.trim() !== '') {
-                
-                // 1. Put the name into the custom input field
                 const customInput = document.getElementById('custom-nama-input');
                 customInput.value = passedName;
-                
-                // 2. Change the title to indicate this is their choice
                 document.getElementById('custom-nama-title').innerText = "Nama Pilihanmu";
-                
-                // 3. Automatically select the 3rd radio button card
                 document.getElementById('radio-custom-nama').checked = true;
-                
-                // 4. Update the main header to reflect they chose a name
-                document.querySelector('h1').innerHTML = `Bagus! Kami telah menyimpan namamu. <br class="hidden md:block"><span class="text-blue-600">Sekarang Pilih Identitas Bisnismu</span>`;
             }
         });
 
+        // Handle form submission to redirect to Payment Gateway
         document.getElementById('setup-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const urlParams = new URLSearchParams(window.location.search);
             const passedName = urlParams.get('nama') || document.getElementById('custom-nama-input').value || 'Toko Baru';
             
-            // Alihkan langsung ke payment gateway dengan membawa parameter nama bisnis
+            // Redirect to payment.html with business name
             window.location.href = `payment.html?nama=${encodeURIComponent(passedName)}`;
         });
     </script>
