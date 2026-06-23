@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapakinstan - Memuat...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .page-bg {
+            background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
+        }
+
+        /* 3D Circular Ring Animation */
+        .loader-scene {
+            perspective: 600px; /* Adjusts the intensity of the 3D distortion */
+            width: 200px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .loader-tilt {
+            transform-style: preserve-3d;
+            /* View from horizontal with slight offset to the top */
+            transform: rotateX(-12deg); 
+        }
+
+        .loader-ring {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: ringSpin 3s linear infinite;
+        }
+
+        /* Spins the entire ring */
+        @keyframes ringSpin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        /* The 2D circles on the ring */
+        .dot {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            margin-left: -13px;
+            margin-top: -13px;
+            background-color: #2563EB; /* Tailwind blue-600 */
+            border-radius: 50%;
+            
+            /* Pushes the dots outward in a circle, facing away from center */
+            transform: rotateY(calc(var(--i) * 30deg)) translateZ(75px);
+            
+            /* Soft glow */
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+            
+            /* Sync depth-of-field (blur and fade) with the 3D rotation */
+            animation: dotDepth 3s linear infinite;
+            /* Delay based on position so it blurs when it hits the back */
+            animation-delay: calc(var(--i) * -0.25s); 
+        }
+
+        /* Creates the 3D depth-of-field effect (front is sharp, back is blurry) */
+        @keyframes dotDepth {
+            0%, 100% { 
+                opacity: 1; 
+                filter: blur(0px); 
+            }
+            50% { 
+                opacity: 0.2; 
+                filter: blur(4px); 
+            }
+        }
+    </style>
+</head>
+<body class="page-bg min-h-screen text-slate-800 flex flex-col overflow-hidden">
+
+    <nav class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center bg-transparent absolute top-0 left-0 right-0 z-10">
+        <div class="text-2xl font-bold tracking-tighter">lapak<span class="text-blue-600">✦</span>instan.</div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium">
+            <a href="index.html#beranda" class="hover:text-blue-600 transition">Beranda</a>
+            <a href="index.html#fitur" class="hover:text-blue-600 transition">Fitur</a>
+            <a href="index.html#template" class="hover:text-blue-600 transition">Template</a>
+            <a href="index.html#harga" class="hover:text-blue-600 transition">Harga</a>
+            <a href="index.html#bantuan" class="hover:text-blue-600 transition">Bantuan</a>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="login.html" class="hidden md:block text-sm font-medium hover:text-blue-600">Masuk</a>
+            <a href="register.html" class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition">Daftar</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center px-4">
+        
+        <div class="loader-scene mb-10">
+            <div class="loader-tilt">
+                <div class="loader-ring">
+                    <div class="dot" style="--i: 0;"></div>
+                    <div class="dot" style="--i: 1;"></div>
+                    <div class="dot" style="--i: 2;"></div>
+                    <div class="dot" style="--i: 3;"></div>
+                    <div class="dot" style="--i: 4;"></div>
+                    <div class="dot" style="--i: 5;"></div>
+                    <div class="dot" style="--i: 6;"></div>
+                    <div class="dot" style="--i: 7;"></div>
+                    <div class="dot" style="--i: 8;"></div>
+                    <div class="dot" style="--i: 9;"></div>
+                    <div class="dot" style="--i: 10;"></div>
+                    <div class="dot" style="--i: 11;"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-lg md:text-xl font-medium text-slate-700 text-center tracking-wide">
+            Menghubungkan data ke Lapakinstan..
+        </h2>
+
+    </main>
+
+</body>
+</html>
