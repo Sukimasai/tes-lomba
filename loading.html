@@ -12,9 +12,8 @@
             background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
         }
 
-        /* 3D Circular Ring Animation */
         .loader-scene {
-            perspective: 600px; /* Adjusts the intensity of the 3D distortion */
+            perspective: 600px;
             width: 200px;
             height: 120px;
             display: flex;
@@ -25,7 +24,6 @@
 
         .loader-tilt {
             transform-style: preserve-3d;
-            /* View from horizontal with slight offset to the top */
             transform: rotateX(-12deg); 
         }
 
@@ -35,35 +33,28 @@
             animation: ringSpin 3s linear infinite;
         }
 
-        /* Spins the entire ring */
         @keyframes ringSpin {
             0% { transform: rotateY(0deg); }
             100% { transform: rotateY(360deg); }
         }
 
-        /* The 2D circles on the ring */
         .dot {
             position: absolute;
             width: 26px;
             height: 26px;
             margin-left: -13px;
             margin-top: -13px;
-            background-color: #2563EB; /* Tailwind blue-600 */
+            background-color: #2563EB;
             border-radius: 50%;
             
-            /* Pushes the dots outward in a circle, facing away from center */
             transform: rotateY(calc(var(--i) * 30deg)) translateZ(75px);
             
-            /* Soft glow */
             box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
             
-            /* Sync depth-of-field (blur and fade) with the 3D rotation */
             animation: dotDepth 3s linear infinite;
-            /* Delay based on position so it blurs when it hits the back */
             animation-delay: calc(var(--i) * -0.25s); 
         }
 
-        /* Creates the 3D depth-of-field effect (front is sharp, back is blurry) */
         @keyframes dotDepth {
             0%, 100% { 
                 opacity: 1; 
